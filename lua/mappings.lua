@@ -45,6 +45,7 @@ map(
 -- map("n", "<leader>fm", function()
 --   require("conform").format { lsp_fallback = true }
 -- end, { desc = "general format file" })
+map("n", "<leader>fm", "ggVG=",{desc ="default format file"})
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
