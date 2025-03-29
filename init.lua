@@ -29,10 +29,8 @@ require("lazy").setup({
     { import = "plugins" },
   },
   lazy_conf
-  --  install = { colorscheme = { "habamax" } },
-  --  checker = { enabled = true },
-
 })
+
 require("options")
 require("mappings")
 
