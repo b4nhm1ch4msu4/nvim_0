@@ -1,5 +1,7 @@
 local map = vim.keymap.set
 
+map("n", ";", ":", { desc = "quit" })
+
 -- Clear highlights
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
@@ -42,7 +44,7 @@ map(
 )
 
 -- Format file
-map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>", { desc = "default format file" })
+-- map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", { desc = "default format file" })
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
@@ -52,3 +54,8 @@ map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
 -- map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
 map("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Oil toggle window" })
+
+-- Conform formater
+map("n", "<leader>fm", function()
+  require("conform").format { lsp_fallback = true }
+end, { desc = "general format file" })
