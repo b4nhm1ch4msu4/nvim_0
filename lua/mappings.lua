@@ -13,10 +13,10 @@ map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 -- rebind j/k with gj/gk
 map("n", "j", function()
-  return vim.v.count == 0 and "gj" or "j"
+	return vim.v.count == 0 and "gj" or "j"
 end, { expr = true, noremap = true })
 map("n", "k", function()
-  return vim.v.count == 0 and "gk" or "k"
+	return vim.v.count == 0 and "gk" or "k"
 end, { expr = true, noremap = true })
 
 -- Resize window using <ctrl> arrow keys
@@ -37,25 +37,29 @@ map({ "n", "v" }, "<C-a>", "ggVG", { desc = "Select All" })
 
 -- Disable diagnostic
 map(
-  "n",
-  "<leader>ud",
-  ":lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>",
-  { desc = "Toggle Diagnostic", silent = true }
+	"n",
+	"<leader>ud",
+	":lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>",
+	{ desc = "Toggle Diagnostic", silent = true }
 )
-
--- Format file
--- map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", { desc = "default format file" })
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- nvimtree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+-- map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
 -- map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
-map("n", "<leader>e", "<cmd>Oil<CR>", { desc = "Oil toggle window" })
+
+-- Oil file explorer
+map("n", "<leader>e", function()
+	require("oil").toggle_float()
+end, { desc = "Oil toggle window" })
+
+-- Format file
+-- map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", { desc = "default format file" })
 
 -- Conform formater
 map("n", "<leader>fm", function()
-  require("conform").format { lsp_fallback = true }
+	require("conform").format({ lsp_fallback = true })
 end, { desc = "general format file" })

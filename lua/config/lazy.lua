@@ -1,6 +1,5 @@
 return {
   defaults = { lazy = true },
-
   ui = {
     icons = {
       ft = "",
